@@ -17,10 +17,10 @@ import androidx.compose.foundation.background
 //    CenteredTextScreen("Achievements", paddingValues)
 //}
 
-@Composable
-fun ChatScreen() {
-    CenteredTextScreen("Chat")
-}
+//@Composable
+//fun ChatScreen() {
+//    CenteredTextScreen("Chat")
+//}
 
 //@Composable
 //fun DocsScreen(paddingValues: PaddingValues) {

@@ -24,7 +24,9 @@ fun AppNavGraph(
             when (selectedIndex) {
                 0 -> DashboardScreen()
                 1 -> AchievementScreen()
-                2 -> ChatScreen()
+                2 -> ChatScreen(onChatClick = { chatId ->
+                navController.navigate("chat_detail/$chatId")
+            })
                 3 -> SyllabusScreen()
                 4 -> ProfileScreen(
                     onEditClick = { navController.navigate("edit_profile") }
@@ -40,5 +42,10 @@ fun AppNavGraph(
                 onChangePasswordClick = { /* TODO */ }
             )
         }
+        composable("chat_detail/{chatId}") { backStackEntry ->
+            val chatId = backStackEntry.arguments?.getString("chatId") ?: ""
+            ChatDetailScreen(chatId = chatId, onBackClick = { navController.popBackStack() })
+        }
+
     }
 }
