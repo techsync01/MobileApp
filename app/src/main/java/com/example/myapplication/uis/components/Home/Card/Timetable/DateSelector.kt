@@ -1,7 +1,7 @@
 
 
 
-package com.example.myapplication.uis.components.Home.Card
+package com.example.myapplication.uis.components.Home.Card.Timetable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

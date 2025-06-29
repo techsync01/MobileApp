@@ -14,9 +14,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.uis.components.Home.Card.DateSelector
-import com.example.myapplication.uis.components.Home.Card.ScheduleCard
-import com.example.myapplication.uis.components.Home.Card.TimeLineBreak
+import com.example.myapplication.uis.components.Home.Card.Timetable.DateSelector
+import com.example.myapplication.uis.components.Home.Card.Timetable.ScheduleCard
+import com.example.myapplication.uis.components.Home.Card.Timetable.TimeLineBreak
 import com.example.myapplication.uis.model.Home.Timetable.DummyScheduleData
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

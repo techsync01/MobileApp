@@ -91,29 +91,29 @@ fun MyClassesScreen(navController: NavHostController) {
 //}
 
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AttendanceScreen(navController: NavHostController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Attendance") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
-            Text("Attendance", fontSize = 24.sp)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text("Present: 22")
-            Text("Absent: 3")
-        }
-    }
-}
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun AttendanceScreen(navController: NavHostController) {
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text("Attendance") },
+//                navigationIcon = {
+//                    IconButton(onClick = { navController.popBackStack() }) {
+//                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+//                    }
+//                }
+//            )
+//        }
+//    ) { padding ->
+//        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
+//            Text("Attendance", fontSize = 24.sp)
+//            Spacer(modifier = Modifier.height(16.dp))
+//            Text("Present: 22")
+//            Text("Absent: 3")
+//        }
+//    }
+//}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -52,7 +52,7 @@ fun AppNavGraph(
         composable("time_table") {
             TimeTableScreen(onBack = { navController.popBackStack() })
         }
-        composable("attendance") { AttendanceScreen(navController) }
+        composable("attendance") { AttendanceScreen(onBack = { navController.popBackStack() }) }
         composable("exams") { ExamsScreen(navController) }
         composable("assignments") { AssignmentsScreen(navController) }
         composable("dues") { DuesScreen(navController) }
