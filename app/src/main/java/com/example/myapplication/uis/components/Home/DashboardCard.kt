@@ -1,6 +1,7 @@
 package com.example.myapplication.uis.components.Home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -13,12 +14,13 @@ import androidx.compose.ui.unit.sp
 import com.example.myapplication.uis.model.Home.DashboardItem
 
 @Composable
-fun DashboardCard(item: DashboardItem) {
+fun DashboardCard(item: DashboardItem,onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
-            .height(200.dp),
+            .height(200.dp)
+        .clickable { onClick() },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = item.bgColor),
         elevation = CardDefaults.cardElevation(8.dp)

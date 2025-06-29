@@ -1,61 +1,3 @@
-//package com.example.myapplication.uis.screens
-//
-//
-//import androidx.compose.foundation.layout.*
-//import androidx.compose.foundation.lazy.grid.GridCells
-//import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-//import androidx.compose.foundation.lazy.grid.items
-//import androidx.compose.material3.*
-//import androidx.compose.runtime.Composable
-//import androidx.compose.ui.Modifier
-//import androidx.compose.ui.unit.dp
-//import androidx.compose.ui.unit.sp
-//import androidx.compose.ui.text.font.FontWeight
-//import androidx.compose.ui.graphics.Color
-//import com.example.myapplication.uis.components.*
-//import com.example.myapplication.uis.model.Home.DashboardItem
-//import com.example.myapplication.R
-//
-//@Composable
-//fun DashboardScreen() {
-//    val dashboardItems = listOf(
-//        DashboardItem("My Classes", Color(0xFF55D3B2), android.R.drawable.ic_menu_agenda),
-//        DashboardItem("Time Table", Color(0xFFA48CF6), android.R.drawable.ic_menu_month),
-//        DashboardItem("Attendance", Color(0xFF61C7F3), android.R.drawable.ic_menu_my_calendar),
-//        DashboardItem("Exams", Color(0xFFF583A5), android.R.drawable.ic_menu_edit),
-//        DashboardItem("Assignments", Color(0xFFFF8C47), android.R.drawable.ic_menu_manage),
-//        DashboardItem("Dues", Color(0xFFFFCC3B), android.R.drawable.ic_menu_info_details),
-//    )
-//
-//    Scaffold(
-//        topBar = { TopBar() },
-//        bottomBar = {
-//            CustomBottomBar(selectedIndex = 0) {}
-//        }
-//    ) { paddingValues ->
-//        Column(
-//            modifier = Modifier
-//                .padding(paddingValues)
-//                .padding(horizontal = 16.dp)
-//        ) {
-//            Text(
-//                text = "My Space",
-//                fontWeight = FontWeight.Bold,
-//                fontSize = 20.sp,
-//                modifier = Modifier.padding(vertical = 8.dp)
-//            )
-//            LazyVerticalGrid(
-//                columns = GridCells.Fixed(2),
-//                modifier = Modifier.fillMaxSize(),
-//                contentPadding = PaddingValues(8.dp)
-//            ) {
-//                items(dashboardItems) { item ->
-//                    DashboardCard(item)
-//                }
-//            }
-//        }
-//    }
-//}
 
 
 package com.example.myapplication.uis.screens
@@ -74,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavHostController
 import com.example.myapplication.R
 import com.example.myapplication.uis.components.BottomNavbar.CustomBottomBar
 import com.example.myapplication.uis.components.Home.AbsentAvatarList
@@ -85,7 +28,7 @@ import com.example.myapplication.uis.model.Home.DashboardItem
 import com.example.myapplication.uis.model.Home.EventItem
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(navController: NavHostController) {
     val dashboardItems = listOf(
         DashboardItem("My Classes", Color(0xFF55D3B2), android.R.drawable.ic_menu_agenda),
         DashboardItem("Time Table", Color(0xFFA48CF6), android.R.drawable.ic_menu_month),
@@ -147,9 +90,22 @@ fun DashboardScreen() {
                         userScrollEnabled = false,
                         contentPadding = PaddingValues(8.dp)
                     ) {
+//                        items(dashboardItems) { item ->
+//                            DashboardCard(item)
+//                        }
                         items(dashboardItems) { item ->
-                            DashboardCard(item)
+                            DashboardCard(item) {
+                                when (item.title) {
+                                    "My Classes" -> navController.navigate("my_classes")
+                                    "Time Table" -> navController.navigate("time_table")
+                                    "Attendance" -> navController.navigate("attendance")
+                                    "Exams" -> navController.navigate("exams")
+                                    "Assignments" -> navController.navigate("assignments")
+                                    "Dues" -> navController.navigate("dues")
+                                }
+                            }
                         }
+
                     }
 
                     // ✅ This spacer separates the last row from the Events section

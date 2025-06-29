@@ -22,7 +22,8 @@ fun AppNavGraph(
     ) {
         composable("main") {
             when (selectedIndex) {
-                0 -> DashboardScreen()
+//                0 -> DashboardScreen()
+                0 -> DashboardScreen(navController)
                 1 -> AchievementScreen()
                 2 -> ChatScreen(onChatClick = { chatId ->
                 navController.navigate("chat_detail/$chatId")
@@ -46,6 +47,15 @@ fun AppNavGraph(
             val chatId = backStackEntry.arguments?.getString("chatId") ?: ""
             ChatDetailScreen(chatId = chatId, onBackClick = { navController.popBackStack() })
         }
+        composable("my_classes") { MyClassesScreen(navController) }
+//        composable("time_table") { TimeTableScreen(navController.popBackStack() ) }
+        composable("time_table") {
+            TimeTableScreen(onBack = { navController.popBackStack() })
+        }
+        composable("attendance") { AttendanceScreen(navController) }
+        composable("exams") { ExamsScreen(navController) }
+        composable("assignments") { AssignmentsScreen(navController) }
+        composable("dues") { DuesScreen(navController) }
 
     }
 }
