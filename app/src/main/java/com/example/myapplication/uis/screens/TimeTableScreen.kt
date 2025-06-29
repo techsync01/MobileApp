@@ -18,16 +18,25 @@ import com.example.myapplication.uis.components.Home.Card.DateSelector
 import com.example.myapplication.uis.components.Home.Card.ScheduleCard
 import com.example.myapplication.uis.components.Home.Card.TimeLineBreak
 import com.example.myapplication.uis.model.Home.Timetable.DummyScheduleData
-import com.example.myapplication.uis.model.Home.Timetable.ScheduleItem
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 val Purple500 = Color(0xFF6200EE)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimeTableScreen(onBack: () -> Unit) {
-    var selectedDate by remember { mutableStateOf("06") }
+    val today = LocalDate.now()
+    val dateFormatter = DateTimeFormatter.ofPattern("dd")
+    var selectedDate by remember { mutableStateOf(today.format(dateFormatter)) }
+
     val schedule = remember(selectedDate) {
         DummyScheduleData.getScheduleForDate(selectedDate)
+    }
+    val fullDateLabel = remember(selectedDate) {
+        val today = LocalDate.now().withDayOfMonth(selectedDate.toInt())
+        val formatter = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy") // e.g., Tuesday, 06 May 2025
+        today.format(formatter)
     }
 
     Column(
@@ -50,8 +59,9 @@ fun TimeTableScreen(onBack: () -> Unit) {
 
         DateSelector(selectedDate = selectedDate, onDateSelected = { selectedDate = it })
 
+
         Text(
-            text = "Tuesday, 06 May 2025",
+            text = fullDateLabel,
             color = Color.White,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
         )

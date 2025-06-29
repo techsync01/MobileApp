@@ -1,5 +1,7 @@
-package com.example.myapplication.uis.components.Home.Card
 
+
+
+package com.example.myapplication.uis.components.Home.Card
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,35 +17,42 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.Purple700
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Composable
-fun DateSelector(selectedDate: String, onDateSelected: (String) -> Unit) {
-    val days = listOf(
-        "05" to "MON",
-        "06" to "TUE",
-        "07" to "WED",
-        "08" to "THU",
-        "09" to "FRI",
-        "10" to "SAT"
-    )
+fun DateSelector(
+    selectedDate: String,
+    onDateSelected: (String) -> Unit
+) {
+    val today = LocalDate.now()
+    val startOfWeek = today.with(DayOfWeek.MONDAY)
+    val dateFormatter = DateTimeFormatter.ofPattern("dd")
+
+    val daysOfWeek = (0..6).map { offset ->
+        val date = startOfWeek.plusDays(offset.toLong())
+        val dayLabel = date.dayOfWeek.name.take(3)
+        val isToday = date == today
+        Triple(date.format(dateFormatter), dayLabel, isToday)
+    }
 
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(days) { (date, day) ->
+        items(daysOfWeek) { (date, day, isToday) ->
             val isSelected = date == selectedDate
+
             Column(
                 modifier = Modifier
                     .clip(RoundedCornerShape(12.dp))
-                    .background(
-                        color = if (isSelected) Purple700 else Color.White
-                    )
+                    .background(if (isSelected) Purple700 else Color.White)
                     .clickable { onDateSelected(date) }
                     .padding(horizontal = 12.dp, vertical = 8.dp)
             ) {
                 Text(
-                    text = day,
+                    text = if (isToday) "$day" else day,
                     color = if (isSelected) Color.White else Color.Gray,
                     style = MaterialTheme.typography.bodySmall
                 )
@@ -56,4 +65,3 @@ fun DateSelector(selectedDate: String, onDateSelected: (String) -> Unit) {
         }
     }
 }
-

@@ -24,11 +24,11 @@ enum class NoteType {
 object DummyScheduleData {
     fun getScheduleForDate(date: String): List<ScheduleItem> {
         return when (date) {
-            "05" -> listOf(
+            "28" -> listOf(
                 ScheduleItem("8:00 AM", "Class VI-A", "Science", "Test on Chapter 2", NoteType.TEST, Color(0xFF4CAF50)),
                 ScheduleItem("10:00 AM", "Class V-B", "English", "Worksheet Review", NoteType.INFO, Color(0xFF03A9F4))
             )
-            "06" -> listOf(
+            "29" -> listOf(
                 ScheduleItem("7:30 AM", "Class VI-A", "Science", null, null, Color(0xFF4CAF50)),
                 ScheduleItem("8:00 AM", "Class VI-B", "Science", "Surprise test of chapter 5", NoteType.TEST, Color(0xFF673AB7)),
                 ScheduleItem("9:00 AM", "Class V-A", "English", "Grammar Vocab", NoteType.INFO, Color(0xFF03A9F4)),
