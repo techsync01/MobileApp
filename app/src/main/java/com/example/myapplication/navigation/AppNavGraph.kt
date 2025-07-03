@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.myapplication.uis.model.Edit.UserProfile
 import com.example.myapplication.uis.screens.*
+import com.example.myapplication.uis.screens.Class.ClassDetailScreen
+import com.example.myapplication.uis.screens.Class.MyClassesScreen
 
 @Composable
 fun AppNavGraph(
@@ -47,8 +49,16 @@ fun AppNavGraph(
             val chatId = backStackEntry.arguments?.getString("chatId") ?: ""
             ChatDetailScreen(chatId = chatId, onBackClick = { navController.popBackStack() })
         }
-        composable("my_classes") { MyClassesScreen(navController) }
-//        composable("time_table") { TimeTableScreen(navController.popBackStack() ) }
+//        composable("my_classes") { MyClassesScreen(navController) }
+        composable("my_classes") {
+            MyClassesScreen(navController)
+        }
+
+        composable("class_detail/{className}") { backStackEntry ->
+            val className = backStackEntry.arguments?.getString("className") ?: ""
+            ClassDetailScreen(className = className, navController = navController)
+        }
+
         composable("time_table") {
             TimeTableScreen(onBack = { navController.popBackStack() })
         }

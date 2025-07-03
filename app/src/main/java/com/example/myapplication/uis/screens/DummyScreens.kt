@@ -44,30 +44,30 @@ import androidx.navigation.NavHostController
 //}
 
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyClassesScreen(navController: NavHostController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("My Classes") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
-            Text("My Classes", fontSize = 24.sp)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text("- Class 1: Mathematics")
-            Text("- Class 2: Science")
-            Text("- Class 3: History")
-        }
-    }
-}
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun MyClassesScreen(navController: NavHostController) {
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text("My Classes") },
+//                navigationIcon = {
+//                    IconButton(onClick = { navController.popBackStack() }) {
+//                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+//                    }
+//                }
+//            )
+//        }
+//    ) { padding ->
+//        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
+//            Text("My Classes", fontSize = 24.sp)
+//            Spacer(modifier = Modifier.height(16.dp))
+//            Text("- Class 1: Mathematics")
+//            Text("- Class 2: Science")
+//            Text("- Class 3: History")
+//        }
+//    }
+//}
 
 
 //@OptIn(ExperimentalMaterial3Api::class)
