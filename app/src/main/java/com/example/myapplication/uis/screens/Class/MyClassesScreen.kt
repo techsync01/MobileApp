@@ -27,7 +27,12 @@ fun MyClassesScreen(navController: NavController) {
         ClassItem("VI-B", "Minakshi Khanna", R.drawable.avtar1, 0.94f, 32, 41, Color(0xFFFF7043)),
         ClassItem("V-A", "Lavanya Pathak", R.drawable.avtar1, 0.73f, 29, 35, Color(0xFF42A5F5)),
         ClassItem("VI-B", "Minakshi Khanna", R.drawable.avtar1, 0.94f, 32, 41, Color(0xFFFFC107)),
-    )
+        ClassItem("V-A", "Lavanya Pathak", R.drawable.avtar1, 0.73f, 29, 35, Color(0xFF7C4DFF)),
+        ClassItem("VI-B", "Minakshi Khanna", R.drawable.avtar1, 0.94f, 32, 41, Color(0xFFFF7043)),
+        ClassItem("V-A", "Lavanya Pathak", R.drawable.avtar1, 0.73f, 29, 35, Color(0xFF42A5F5)),
+        ClassItem("VI-B", "Minakshi Khanna", R.drawable.avtar1, 0.94f, 32, 41, Color(0xFFFFC107)),
+
+        )
 
     Scaffold(
         topBar = {
@@ -50,3 +55,33 @@ fun MyClassesScreen(navController: NavController) {
         }
     }
 }
+
+
+//@Composable
+//fun MyClassesScreen(navController: NavController) {
+//    val classes = listOf(
+//        // create four items based on image reference
+//        ClassItem("V-A", "Lavanya Pathak", R.drawable.avtar1, 0.73f, 29, 35, Color(0xFF7C4DFF)),
+//        ClassItem("VI‑B", "Minakshi Khanna", R.drawable.avtar1, 0.94f, 32, 41, Color(0xFFFF7043)),
+//        ClassItem("V-C", "Amit Sharma", R.drawable.avtar1, 0.85f, 28, 33, Color(0xFF42A5F5)),
+//        ClassItem("VII‑A", "Sunita Rao", R.drawable.avtar1, 0.67f, 20, 30, Color(0xFFFFC107))
+//    )
+//    Scaffold(topBar = {
+//        TopAppBar(
+//            title = { Text("My Classes") },
+//            navigationIcon = {
+//                IconButton(onClick = { navController.popBackStack() }) {
+//                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+//                }
+//            }
+//        )
+//    }) { padding ->
+//        LazyColumn(modifier = Modifier.padding(padding)) {
+//            items(classes.size) { index ->
+//                ClassCard(item = classes[index]) {
+//                    navController.navigate("class_detail/${classes[index].title}")
+//                }
+//            }
+//        }
+//    }
+//}

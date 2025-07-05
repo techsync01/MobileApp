@@ -22,48 +22,31 @@ fun ClassCard(item: ClassItem, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(12.dp)
             .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(6.dp),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(6.dp)
     ) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = item.title, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-
+                Text(item.title, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                Spacer(Modifier.height(4.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(
-                        painter = painterResource(id = item.teacherAvatar),
-                        contentDescription = item.teacher,
-                        modifier = Modifier
-                            .size(20.dp)
-                            .clip(CircleShape)
+                    Image(painterResource(item.teacherAvatar), null,
+                        Modifier.size(24.dp).clip(CircleShape)
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(Modifier.width(8.dp))
                     Text(item.teacher)
                 }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                LinearProgressIndicator(
-                    progress = item.progress,
-                    color = item.color,
-                    trackColor = MaterialTheme.colorScheme.surfaceVariant,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(6.dp)
-                )
+                Spacer(Modifier.height(8.dp))
+                LinearProgressIndicator(item.progress, color = item.color, trackColor = MaterialTheme.colorScheme.surfaceVariant,
+                    modifier = Modifier.fillMaxWidth().height(6.dp))
+                Spacer(Modifier.height(8.dp))
                 Text("Performance", fontSize = 12.sp)
             }
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            ProgressRing(
-                percentage = item.progress,
-                obtained = item.obtained,
-                total = item.total,
-                color = item.color
-            )
+            Spacer(Modifier.width(12.dp))
+            ProgressRing(item.progress, item.obtained, item.total, item.color)
         }
     }
 }
+
