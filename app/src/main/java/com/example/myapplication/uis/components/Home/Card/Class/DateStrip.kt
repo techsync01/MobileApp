@@ -25,18 +25,18 @@ fun DateStrip(
     onDateSelected: (LocalDate) -> Unit
 ) {
     LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = Modifier.padding(10.dp)
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+        modifier = Modifier.padding(6.dp)
     ) {
         items(dates) { date ->
             val isSelected = date == selected
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(10.dp))
                     .background(if (isSelected) Color(0xFF7C4DFF) else Color(0xFFF0F0F0))
                     .clickable { onDateSelected(date) }
-                    .padding(vertical = 8.dp, horizontal = 12.dp)
+                    .padding(vertical = 8.dp, horizontal = 11.dp)
             ) {
                 Text(
                     text = date.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault()),

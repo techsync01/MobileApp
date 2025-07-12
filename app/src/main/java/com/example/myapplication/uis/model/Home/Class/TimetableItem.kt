@@ -13,5 +13,6 @@ data class TimeTableEntry(
     val topic: String,
     @DrawableRes val teacherAvatar: Int,
     val isBreak: Boolean = false,
-    val breakLabel: String = ""
+    val timestamp: String = "",
+    val label:String="s"
 )

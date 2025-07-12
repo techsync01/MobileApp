@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myapplication.uis.components.Home.Card.Timetable.TimeLineBreak
 import com.example.myapplication.uis.model.Home.Class.TimeTableEntry
 
 
@@ -28,17 +29,18 @@ fun TimeTableRow(entry: TimeTableEntry) {
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp, vertical = 8.dp)
         ) {
-            Text(
-                text = entry.breakLabel,
-                color = Color(0xFF7C4DFF),
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(Modifier.width(8.dp))
-            Divider(
-                color = Color(0xFF7C4DFF),
-                thickness = 1.dp,
-                modifier = Modifier.weight(1f)
-            )
+//            Text(
+//                text = entry.breakLabel,
+//                color = Color(0xFF7C4DFF),
+//                fontWeight = FontWeight.Bold
+//            )
+//            Spacer(Modifier.width(8.dp))
+//            Divider(
+//                color = Color(0xFF7C4DFF),
+//                thickness = 1.dp,
+//                modifier = Modifier.weight(1f)
+//            )
+            TimeLineBreak(entry.timestamp,entry.label)
         }
     } else {
         Card(

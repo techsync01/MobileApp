@@ -2,11 +2,13 @@
 
 package com.example.myapplication.navigation
 
-import ClassDetailScreen
+//import ClassDetailScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.myapplication.uis.model.Edit.UserProfile
 import com.example.myapplication.uis.screens.*
 import com.example.myapplication.uis.screens.Class.*
@@ -69,7 +71,13 @@ fun AppNavGraph(
 //        }
         composable("student_screen/{className}") { backStackEntry ->
             val className = backStackEntry.arguments?.getString("className") ?: ""
-            StudentDetailScreen( nav = navController)
+            LeaderboardScreen( navController = navController)
+        }
+        composable("studentDetail/{studentId}",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            StudentDetailScreen(studentId, navController)
         }
 
 

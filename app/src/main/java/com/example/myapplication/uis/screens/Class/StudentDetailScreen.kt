@@ -2,12 +2,12 @@ package com.example.myapplication.uis.screens.Class
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,47 +17,69 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.myapplication.R
+import com.example.myapplication.uis.components.Home.Card.Class.ClassDetail.LeaderBorad.CircularProgressWithLabel
+import com.example.myapplication.uis.model.Home.Class.dummyStudents
+import com.example.myapplication.uis.screens.Purple500
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StudentDetailScreen(nav: NavController) {
+fun StudentDetailScreen(studentId: Int, navController: NavController) {
+    val student = remember {
+        dummyStudents.find { it.id == studentId } ?: dummyStudents.first()
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Students") },
+                title = { Text(student.name) },
                 navigationIcon = {
-                    IconButton(onClick = { nav.popBackStack() }) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 }
             )
         }
     ) { padding ->
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .padding(padding)
-                .padding(12.dp)
+                .padding(16.dp)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(10) { idx ->
+            Image(
+                painter = painterResource(student.image),
+                contentDescription = "Student Image",
+                modifier = Modifier
+                    .size(100.dp)
+                    .clip(CircleShape)
+            )
+            Spacer(Modifier.height(12.dp))
+            Text(text = student.name, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Text(text = student.phone, color = Color.Gray)
+            Spacer(Modifier.height(20.dp))
+
+            Text("Performance by Subject", fontWeight = FontWeight.SemiBold)
+
+            val subjects = listOf(
+                "Maths" to 92,
+                "Science" to 88,
+                "English" to 95,
+                "Social Studies" to 85,
+                "Hindi" to 89
+            )
+
+            Spacer(Modifier.height(12.dp))
+            subjects.forEach { (subject, mark) ->
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(vertical = 8.dp)
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 6.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.avtar1),
-                        contentDescription = "Student Avatar",
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                    )
-                    Spacer(Modifier.width(12.dp))
-                    Text(
-                        text = "Student ${idx + 1}",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black
-                    )
+                    Text(subject)
+                    CircularProgressWithLabel(score = mark, total = 100, color = Purple500)
                 }
             }
         }
