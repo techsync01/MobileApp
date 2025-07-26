@@ -113,7 +113,10 @@ fun AppNavGraph(
         composable(
             route = "student/{studentId}/attendance",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { StudentAttendanceScreen(navController) }
+        ) {
+//            StudentAttendanceScreen(navController)
+            AttendanceScreen(onBack = { navController.popBackStack() })
+        }
 
         composable(
             route = "student/{studentId}/information",
