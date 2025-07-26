@@ -8,9 +8,24 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.myapplication.uis.model.Edit.UserProfile
-import com.example.myapplication.uis.screens.*
-import com.example.myapplication.uis.screens.Class.*
+import com.example.myapplication.uis.screens.AchievementScreen
+import com.example.myapplication.uis.screens.AttendanceScreen
+import com.example.myapplication.uis.screens.ChatDetailScreen
+import com.example.myapplication.uis.screens.ChatScreen
+import com.example.myapplication.uis.screens.Class.ClassDetailScreen
+import com.example.myapplication.uis.screens.Class.LeaderboardScreen
+import com.example.myapplication.uis.screens.Class.MyClassesScreen
+import com.example.myapplication.uis.screens.Class.StudentDetailsScreen
+import com.example.myapplication.uis.screens.Class.features.StudentInformationScreen
+import com.example.myapplication.uis.screens.DashboardScreen
+import com.example.myapplication.uis.screens.DuesScreen
+import com.example.myapplication.uis.screens.ProfileEditScreen
+import com.example.myapplication.uis.screens.ProfileScreen
+import com.example.myapplication.uis.screens.StudentFeeDetailsScreen
+import com.example.myapplication.uis.screens.SyllabusScreen
 import com.example.myapplication.uis.screens.student.features.PerformanceScreen
+import com.example.myapplication.uis.screens.*
+
 
 @Composable
 fun AppNavGraph(
@@ -48,7 +63,7 @@ fun AppNavGraph(
 
         // ---------------------- PROFILE ----------------------
         composable("edit_profile") {
-            ProfileEditScreen(
+            ProfileEditScreen (
                 user = user,
                 onBackClick = { navController.popBackStack() },
                 onEditClick = { /* Save logic */ },
@@ -118,10 +133,14 @@ fun AppNavGraph(
             AttendanceScreen(onBack = { navController.popBackStack() })
         }
 
-        composable(
-            route = "student/{studentId}/information",
-            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { StudentInformationScreen(navController) }
+
+            composable(
+                route = "student/{studentId}/information",
+                arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+            ) { backStackEntry ->
+                val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+                StudentInformationScreen(navController = navController, studentId = studentId)
+            }
 
         composable(
             route = "student/{studentId}/feeDetails",
