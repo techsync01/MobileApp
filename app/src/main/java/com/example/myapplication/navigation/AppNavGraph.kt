@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import com.example.myapplication.uis.model.Edit.UserProfile
 import com.example.myapplication.uis.screens.*
 import com.example.myapplication.uis.screens.Class.*
+import com.example.myapplication.uis.screens.student.features.PerformanceScreen
 
 @Composable
 fun AppNavGraph(
@@ -97,10 +98,17 @@ fun AppNavGraph(
 
         // ---------------------- STUDENT FEATURE SCREENS (Dummy) ----------------------
         // NOTE: All feature routes are namespaced with studentId so you can use it later.
+
         composable(
-            route = "student/{studentId}/performance",
+            "student/{studentId}/performance",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { StudentPerformanceScreen(navController) }
+        ) { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            PerformanceScreen(
+                studentId = studentId,
+                navController = navController
+            )
+        }
 
         composable(
             route = "student/{studentId}/attendance",

@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.myapplication.uis.components.Home.Card.Class.ClassDetail.FeatureCard
+import com.example.myapplication.uis.model.Home.Class.dummyStudents
 import com.example.myapplication.uis.model.Home.Class.featureCards
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -24,10 +25,12 @@ fun StudentDetailsScreen(
     studentId: Int,
     navController: NavController
 ) {
+    val student = dummyStudents.find { it.id == studentId }
+    val studentName = student?.name ?: "Student"
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Anish Taneja") }, // replace with selected student's name if you fetch it
+                title = { Text(studentName) }, // replace with selected student's name if you fetch it
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
