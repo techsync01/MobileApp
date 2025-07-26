@@ -1,8 +1,6 @@
 
-
 package com.example.myapplication.navigation
 
-//import ClassDetailScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -19,12 +17,20 @@ fun AppNavGraph(
     selectedIndex: Int,
     onIndexChange: (Int) -> Unit
 ) {
-    val user = UserProfile("Lavanya Pathak", "pathaklav12@gmail.com", "+91-9875352416", "V-A", "English")
+    val user = UserProfile(
+        name = "Lavanya Pathak",
+        email = "pathaklav12@gmail.com",
+        phone = "+91-9875352416",
+        className = "V-A",
+        subject = "English"
+    )
 
     NavHost(
         navController = navController,
         startDestination = "main"
     ) {
+
+        // ---------------------- BOTTOM NAV CONTAINER ----------------------
         composable("main") {
             when (selectedIndex) {
                 0 -> DashboardScreen(navController)
@@ -39,6 +45,7 @@ fun AppNavGraph(
             }
         }
 
+        // ---------------------- PROFILE ----------------------
         composable("edit_profile") {
             ProfileEditScreen(
                 user = user,
@@ -48,39 +55,89 @@ fun AppNavGraph(
             )
         }
 
-        composable("chat_detail/{chatId}") { backStackEntry ->
+        // ---------------------- CHAT ----------------------
+        composable(
+            route = "chat_detail/{chatId}",
+            arguments = listOf(navArgument("chatId") { type = NavType.StringType })
+        ) { backStackEntry ->
             val chatId = backStackEntry.arguments?.getString("chatId") ?: ""
             ChatDetailScreen(chatId = chatId, onBackClick = { navController.popBackStack() })
         }
 
-        // 🚀 Navigates from Dashboard -> My Classes
+        // ---------------------- CLASSES ----------------------
         composable("my_classes") {
             MyClassesScreen(navController)
         }
 
-        // 🚀 Navigates from My Classes -> Class Detail
-        composable("class_detail/{className}") { backStackEntry ->
+        composable(
+            route = "class_detail/{className}",
+            arguments = listOf(navArgument("className") { type = NavType.StringType })
+        ) { backStackEntry ->
             val className = backStackEntry.arguments?.getString("className") ?: ""
             ClassDetailScreen(title = className, nav = navController)
         }
 
-        // 🚀 Navigates from Class Detail -> Student Detail
-//        composable("student_screen/{className}") { backStackEntry ->
-//            val className = backStackEntry.arguments?.getString("className") ?: ""
-//            StudentDetailScreen( nav = navController)
-//        }
-        composable("student_screen/{className}") { backStackEntry ->
-            val className = backStackEntry.arguments?.getString("className") ?: ""
-            LeaderboardScreen( navController = navController)
+        // ---------------------- LEADERBOARD → STUDENT DETAILS ----------------------
+        // From ClassDetail -> Student list (Leaderboard)
+        composable(
+            route = "student_screen/{className}",
+            arguments = listOf(navArgument("className") { type = NavType.StringType })
+        ) {
+            LeaderboardScreen(navController = navController)
         }
-        composable("studentDetail/{studentId}",
+
+        // Student detail grid (8 feature cards)
+        composable(
+            route = "studentDetail/{studentId}",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
         ) { backStackEntry ->
             val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
-            StudentDetailScreen(studentId, navController)
+            StudentDetailsScreen(studentId, navController)
         }
 
+        // ---------------------- STUDENT FEATURE SCREENS (Dummy) ----------------------
+        // NOTE: All feature routes are namespaced with studentId so you can use it later.
+        composable(
+            route = "student/{studentId}/performance",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { StudentPerformanceScreen(navController) }
 
+        composable(
+            route = "student/{studentId}/attendance",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { StudentAttendanceScreen(navController) }
+
+        composable(
+            route = "student/{studentId}/information",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { StudentInformationScreen(navController) }
+
+        composable(
+            route = "student/{studentId}/feeDetails",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { StudentFeeDetailsScreen(navController) }
+
+        composable(
+            route = "student/{studentId}/participations",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { StudentParticipationsScreen(navController) }
+
+        composable(
+            route = "student/{studentId}/assignments",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { AssignmentsScreen(navController) }
+
+        composable(
+            route = "student/{studentId}/chatWithParents",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { ChatWithParentsScreen(navController) }
+
+        composable(
+            route = "student/{studentId}/chatWithStudent",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { ChatWithStudentScreen(navController) }
+
+        // ---------------------- OTHER (already in your app) ----------------------
         composable("time_table") {
             TimeTableScreen(onBack = { navController.popBackStack() })
         }

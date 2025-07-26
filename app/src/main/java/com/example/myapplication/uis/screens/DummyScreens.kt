@@ -12,11 +12,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 
 //@OptIn(ExperimentalMaterial3Api::class)
@@ -207,3 +209,56 @@ fun CenteredTextScreen(title: String) {
         )
     }
 }
+
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun StudentSubScreen(
+    title: String,
+    navController: NavController
+) {
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text(title) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = null)
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        Text(
+            text = "Dummy $title screen content goes here.",
+            modifier = Modifier.padding(padding).padding(16.dp)
+        )
+    }
+}
+
+@Composable fun StudentPerformanceScreen(navController: NavController) =
+    StudentSubScreen("Performance", navController)
+
+@Composable fun StudentAttendanceScreen(navController: NavController) =
+    StudentSubScreen("Attendance", navController)
+
+@Composable fun StudentInformationScreen(navController: NavController) =
+    StudentSubScreen("Information", navController)
+
+@Composable fun StudentFeeDetailsScreen(navController: NavController) =
+    StudentSubScreen("Fee Details", navController)
+
+@Composable fun StudentParticipationsScreen(navController: NavController) =
+    StudentSubScreen("Participations", navController)
+
+@Composable fun StudentAssignmentsScreen(navController: NavController) =
+    StudentSubScreen("Assignments", navController)
+
+@Composable fun ChatWithParentsScreen(navController: NavController) =
+    StudentSubScreen("Chat With Parents", navController)
+
+@Composable fun ChatWithStudentScreen(navController: NavController) =
+    StudentSubScreen("Chat With Student", navController)
+
