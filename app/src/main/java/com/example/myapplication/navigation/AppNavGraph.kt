@@ -27,6 +27,7 @@ import com.example.myapplication.uis.screens.student.features.PerformanceScreen
 import com.example.myapplication.uis.screens.*
 import com.example.myapplication.uis.screens.Class.features.AssignmentsScreen
 import com.example.myapplication.uis.screens.Class.features.FeeDetailsScreen
+import com.example.myapplication.uis.screens.Class.features.ParentChatScreen
 import com.example.myapplication.uis.screens.Class.features.ParticipationScreen
 
 
@@ -171,16 +172,22 @@ fun AppNavGraph(
         }
 
 
-
         composable(
             route = "student/{studentId}/chatWithParents",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { ChatWithParentsScreen(navController) }
+        ) {backStackEntry->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            ParentChatScreen(studentId = studentId, onBack = { navController.popBackStack() })
+        }
+
 
         composable(
             route = "student/{studentId}/chatWithStudent",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { ChatWithStudentScreen(navController) }
+        ) { backStackEntry->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            ParentChatScreen(studentId = studentId, onBack = { navController.popBackStack() })
+        }
 
         // ---------------------- OTHER (already in your app) ----------------------
         composable("time_table") {
