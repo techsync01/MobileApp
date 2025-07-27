@@ -25,6 +25,7 @@ import com.example.myapplication.uis.screens.StudentFeeDetailsScreen
 import com.example.myapplication.uis.screens.SyllabusScreen
 import com.example.myapplication.uis.screens.student.features.PerformanceScreen
 import com.example.myapplication.uis.screens.*
+import com.example.myapplication.uis.screens.Class.features.FeeDetailsScreen
 
 
 @Composable
@@ -145,7 +146,13 @@ fun AppNavGraph(
         composable(
             route = "student/{studentId}/feeDetails",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { StudentFeeDetailsScreen(navController) }
+        ) { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            FeeDetailsScreen (
+                studentId = studentId,
+                onBack = { navController.popBackStack() }
+            )
+        }
 
         composable(
             route = "student/{studentId}/participations",
