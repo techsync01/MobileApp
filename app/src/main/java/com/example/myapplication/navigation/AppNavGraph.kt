@@ -25,6 +25,7 @@ import com.example.myapplication.uis.screens.StudentFeeDetailsScreen
 import com.example.myapplication.uis.screens.SyllabusScreen
 import com.example.myapplication.uis.screens.student.features.PerformanceScreen
 import com.example.myapplication.uis.screens.*
+import com.example.myapplication.uis.screens.Class.features.AssignmentsScreen
 import com.example.myapplication.uis.screens.Class.features.FeeDetailsScreen
 import com.example.myapplication.uis.screens.Class.features.ParticipationScreen
 
@@ -131,18 +132,16 @@ fun AppNavGraph(
             route = "student/{studentId}/attendance",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
         ) {
-//            StudentAttendanceScreen(navController)
             AttendanceScreen(onBack = { navController.popBackStack() })
         }
 
-
-            composable(
-                route = "student/{studentId}/information",
-                arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-            ) { backStackEntry ->
-                val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
-                StudentInformationScreen(navController = navController, studentId = studentId)
-            }
+        composable(
+            route = "student/{studentId}/information",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            StudentInformationScreen(navController = navController, studentId = studentId)
+        }
 
         composable(
             route = "student/{studentId}/feeDetails",
@@ -163,11 +162,15 @@ fun AppNavGraph(
             ParticipationScreen (onBack = { navController.popBackStack() })
         }
 
-
         composable(
             route = "student/{studentId}/assignments",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { AssignmentsScreen(navController) }
+        ) {backStackEntry->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            AssignmentsScreen(studentId = studentId, onBack = { navController.popBackStack() })
+        }
+
+
 
         composable(
             route = "student/{studentId}/chatWithParents",
