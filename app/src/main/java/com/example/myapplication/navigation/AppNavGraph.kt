@@ -26,6 +26,7 @@ import com.example.myapplication.uis.screens.SyllabusScreen
 import com.example.myapplication.uis.screens.student.features.PerformanceScreen
 import com.example.myapplication.uis.screens.*
 import com.example.myapplication.uis.screens.Class.features.FeeDetailsScreen
+import com.example.myapplication.uis.screens.Class.features.ParticipationScreen
 
 
 @Composable
@@ -154,10 +155,14 @@ fun AppNavGraph(
             )
         }
 
+
         composable(
             route = "student/{studentId}/participations",
             arguments = listOf(navArgument("studentId") { type = NavType.IntType })
-        ) { StudentParticipationsScreen(navController) }
+        ) {
+            ParticipationScreen (onBack = { navController.popBackStack() })
+        }
+
 
         composable(
             route = "student/{studentId}/assignments",
