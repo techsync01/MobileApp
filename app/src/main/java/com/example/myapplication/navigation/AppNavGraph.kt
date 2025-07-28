@@ -62,6 +62,7 @@ fun AppNavGraph(
                 4 -> ProfileScreen(
                     onEditClick = { navController.navigate("edit_profile") }
                 )
+
             }
         }
 
@@ -204,6 +205,10 @@ fun AppNavGraph(
 
         composable("assignments") {
             AssignmentsScreen(navController)
+        }
+
+        composable("lesson"){
+            LessonScreen(navController)
         }
 
         composable("dues") {

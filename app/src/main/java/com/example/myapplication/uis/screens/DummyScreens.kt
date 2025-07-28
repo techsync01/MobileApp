@@ -167,6 +167,30 @@ fun AssignmentsScreen(navController: NavHostController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun LessonScreen(navController: NavHostController) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Lesson Screen") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
+            Text("Lesson Screen", fontSize = 24.sp)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("Math HW: Due June 25")
+            Text("English Essay: Due June 28")
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun DuesScreen(navController: NavHostController) {
     Scaffold(
         topBar = {

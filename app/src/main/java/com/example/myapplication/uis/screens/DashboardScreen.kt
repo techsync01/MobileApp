@@ -35,7 +35,9 @@ fun DashboardScreen(navController: NavHostController) {
         DashboardItem("Attendance", Color(0xFF61C7F3), android.R.drawable.ic_menu_my_calendar),
         DashboardItem("Exams", Color(0xFFF583A5), android.R.drawable.ic_menu_edit),
         DashboardItem("Assignments", Color(0xFFFF8C47), android.R.drawable.ic_menu_manage),
+        DashboardItem("Lesson Plan", Color(0xFFFFCC3B), android.R.drawable.ic_menu_info_details),
         DashboardItem("Dues", Color(0xFFFFCC3B), android.R.drawable.ic_menu_info_details),
+
     )
 
     val events = listOf(
@@ -86,7 +88,7 @@ fun DashboardScreen(navController: NavHostController) {
                         columns = GridCells.Fixed(2),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .heightIn(min = 0.dp, max = 650.dp), // 3 rows x ~200dp cards
+                            .heightIn(min = 0.dp, max = 900.dp), // 3 rows x ~200dp cards
                         userScrollEnabled = false,
                         contentPadding = PaddingValues(8.dp)
                     ) {
@@ -101,6 +103,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     "Attendance" -> navController.navigate("attendance")
                                     "Exams" -> navController.navigate("exams")
                                     "Assignments" -> navController.navigate("assignments")
+                                    "Lesson Plan" -> navController.navigate("lesson")
                                     "Dues" -> navController.navigate("dues")
                                 }
                             }
