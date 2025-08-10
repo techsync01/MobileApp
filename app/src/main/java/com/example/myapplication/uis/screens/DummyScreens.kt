@@ -117,29 +117,29 @@ import androidx.navigation.NavHostController
 //    }
 //}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ExamsScreen(navController: NavHostController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Exams") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
-            Text("Exams", fontSize = 24.sp)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text("Math Exam: June 30")
-            Text("Science Exam: July 5")
-        }
-    }
-}
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun ExamsScreen(navController: NavHostController) {
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text("Exams") },
+//                navigationIcon = {
+//                    IconButton(onClick = { navController.popBackStack() }) {
+//                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+//                    }
+//                }
+//            )
+//        }
+//    ) { padding ->
+//        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
+//            Text("Exams", fontSize = 24.sp)
+//            Spacer(modifier = Modifier.height(16.dp))
+//            Text("Math Exam: June 30")
+//            Text("Science Exam: July 5")
+//        }
+//    }
+//}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

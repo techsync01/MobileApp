@@ -29,6 +29,10 @@ import com.example.myapplication.uis.screens.Class.features.AssignmentsScreen
 import com.example.myapplication.uis.screens.Class.features.FeeDetailsScreen
 import com.example.myapplication.uis.screens.Class.features.ParentChatScreen
 import com.example.myapplication.uis.screens.Class.features.ParticipationScreen
+import com.example.myapplication.uis.screens.HomeCard.Exam.ExamDetailScreen
+import com.example.myapplication.uis.screens.HomeCard.Exam.ExamsScreen
+import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.MakeReportScreen
+import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.ReportCardScreen
 
 
 @Composable
@@ -202,6 +206,19 @@ fun AppNavGraph(
         composable("exams") {
             ExamsScreen(navController)
         }
+        composable("exam_detail/{className}") { backStackEntry ->
+            val className = backStackEntry.arguments?.getString("className") ?: ""
+            ExamDetailScreen(className, navController)
+        }
+        composable("report_card/{studentId}") { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getString("studentId")?.toInt() ?: 0
+            ReportCardScreen(studentId, navController)
+        }
+        composable("make_report/{studentId}") { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getString("studentId")?.toInt() ?: 0
+            MakeReportScreen(studentId, navController)
+        }
+
 
         composable("assignments") {
             AssignmentsScreen(navController)

@@ -24,6 +24,21 @@ data class StudentDetails(
     val permanentAddress: String = ""
 )
 
+// Represents one exam's mark entry
+data class ExamMark(
+    val examName: String,
+    val totalMarks: String,
+    val obtainedMarks: String
+)
+
+// Holds performance of a student
+data class StudentPerformance(
+    val marks: List<ExamMark>,
+    val grades: List<String>
+)
+
+
+
 val dummyStudents = listOf(
     StudentDetails(
         1, "Harshvardhan", "+91-8873562256", R.drawable.avtar1, 98,
@@ -187,6 +202,21 @@ val dummyStudents = listOf(
     )
 )
 
+
+val defaultPerformance = StudentPerformance(
+    marks = listOf(
+        ExamMark("UT-I", "50", "19"),
+        ExamMark("UT-II", "50", "22"),
+        ExamMark("Half Yearly", "100", "78"),
+        ExamMark("UT-III", "50", "25"),
+        ExamMark("UT-IV", "-", "-"),
+        ExamMark("Practice Exam", "-", "-"),
+        ExamMark("Final Year", "-", "-")
+    ),
+    grades = listOf("C", "A", "B1", "B", "-", "-", "-")
+)
+
+
 // -------------------- RANK COLOR --------------------
 fun getRankColor(rank: Int): Color {
     val colors = listOf(
@@ -315,3 +345,8 @@ object DummyPerformanceRepo {
             ?: generatePerformanceForStudent(dummyStudents.first())
     }
 }
+
+
+
+// -----------
+
