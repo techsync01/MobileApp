@@ -32,6 +32,7 @@ import com.example.myapplication.uis.screens.Class.features.ParticipationScreen
 import com.example.myapplication.uis.screens.HomeCard.Assignment.AssignmentDetailScreen
 import com.example.myapplication.uis.screens.HomeCard.Assignment.HomeAssignmentsScreen
 import com.example.myapplication.uis.screens.HomeCard.Assignment.HomeInsideAssignmentDetailScreen
+import com.example.myapplication.uis.screens.HomeCard.Dues.StudentListScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.ExamDetailScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.ExamsScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.MakeReportScreen
@@ -245,9 +246,27 @@ fun AppNavGraph(
         composable("lesson") { LessonScreen(navController) }
         composable("add_lesson") { AddLessonPlanScreen(navController) }
 
-
-        composable("dues") {
-            DuesScreen(navController)
+//
+//        composable("dues") {
+//            DuesScreen(navController)
+//        }
+        composable("dues") { com.example.myapplication.uis.screens.HomeCard.Dues.DuesScreen(navController) }
+        composable(
+            "dues_student_list/{className}",
+            arguments = listOf(navArgument("className") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val className = backStackEntry.arguments?.getString("className") ?: ""
+            StudentListScreen(navController, className)
+        }
+        composable(
+            "dues_student_details/{studentId}",
+            arguments = listOf(navArgument("studentId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val studentId = backStackEntry.arguments?.getInt("studentId") ?: 0
+            FeeDetailsScreen (
+                studentId = studentId,
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }

@@ -27,7 +27,7 @@ object FeeRepository {
             FeePayment(
                 id = "1",
                 studentId = studentId,
-                date = LocalDate.of(2025, 7, 2),
+                date = LocalDate.of(2025, 8, 2),
                 time = LocalTime.of(13, 20),
                 title = "May school fees",
                 amount = 5500,
@@ -37,7 +37,7 @@ object FeeRepository {
             FeePayment(
                 id = "2",
                 studentId = studentId,
-                date = LocalDate.of(2025, 7, 8),
+                date = LocalDate.of(2025, 8, 8),
                 time = LocalTime.of(10, 42),
                 title = "Sports Activity fees",
                 amount = 1200,
@@ -47,7 +47,7 @@ object FeeRepository {
             FeePayment(
                 id = "3",
                 studentId = studentId,
-                date = LocalDate.of(2025, 7, 12),
+                date = LocalDate.of(2025, 8, 12),
                 time = LocalTime.of(14, 55),
                 title = "No Remarks",
                 amount = 300,
