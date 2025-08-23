@@ -36,6 +36,8 @@ import com.example.myapplication.uis.screens.HomeCard.Exam.ExamDetailScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.ExamsScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.MakeReportScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.ReportCardScreen
+import com.example.myapplication.uis.screens.HomeCard.Lesson.AddLessonPlanScreen
+import com.example.myapplication.uis.screens.HomeCard.Lesson.LessonScreen
 
 
 @Composable
@@ -237,9 +239,12 @@ fun AppNavGraph(
             HomeInsideAssignmentDetailScreen(title, navController)
         }
 
-        composable("lesson"){
-            LessonScreen(navController)
-        }
+//        composable("lesson"){
+//            LessonScreen(navController)
+//        }
+        composable("lesson") { LessonScreen(navController) }
+        composable("add_lesson") { AddLessonPlanScreen(navController) }
+
 
         composable("dues") {
             DuesScreen(navController)
