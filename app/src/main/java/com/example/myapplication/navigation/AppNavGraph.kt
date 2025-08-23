@@ -29,6 +29,9 @@ import com.example.myapplication.uis.screens.Class.features.AssignmentsScreen
 import com.example.myapplication.uis.screens.Class.features.FeeDetailsScreen
 import com.example.myapplication.uis.screens.Class.features.ParentChatScreen
 import com.example.myapplication.uis.screens.Class.features.ParticipationScreen
+import com.example.myapplication.uis.screens.HomeCard.Assignment.AssignmentDetailScreen
+import com.example.myapplication.uis.screens.HomeCard.Assignment.HomeAssignmentsScreen
+import com.example.myapplication.uis.screens.HomeCard.Assignment.HomeInsideAssignmentDetailScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.ExamDetailScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.ExamsScreen
 import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.MakeReportScreen
@@ -221,7 +224,17 @@ fun AppNavGraph(
 
 
         composable("assignments") {
-            AssignmentsScreen(navController)
+            HomeAssignmentsScreen(navController)
+        }
+
+        composable("assignment_detail/{className}") { backStackEntry ->
+            val className = backStackEntry.arguments?.getString("className") ?: ""
+            AssignmentDetailScreen(className, navController)
+        }
+
+        composable("home_inside_assignment_detail/{title}") { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title") ?: ""
+            HomeInsideAssignmentDetailScreen(title, navController)
         }
 
         composable("lesson"){
