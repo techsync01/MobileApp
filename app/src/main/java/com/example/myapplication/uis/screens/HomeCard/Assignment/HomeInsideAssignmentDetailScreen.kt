@@ -1,28 +1,37 @@
+////package com.example.myapplication.uis.screens.HomeCard.Assignment
+
 package com.example.myapplication.uis.screens.HomeCard.Assignment
 
-
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.myapplication.uis.components.Home.Card.Assignments.AssignmentTopBar
+import com.example.myapplication.uis.components.Home.Card.Assignments.StudentSubmissionCard
+import com.example.myapplication.uis.model.Home.Class.dummyStudents
+
 
 @Composable
 fun HomeInsideAssignmentDetailScreen(title: String, navController: NavController) {
+
+
     Scaffold(
-        topBar = { AssignmentTopBar(title = title, onBackClick = { navController.popBackStack() }) },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { /* Add detail action */ }) {
-                Text("+")
-            }
-        }
+        topBar = { AssignmentTopBar(title = title, onBackClick = { navController.popBackStack() }) }
     ) { padding ->
-        Column(modifier = Modifier.padding(padding).fillMaxSize().padding(16.dp)) {
-            Text("Assignment Details", style = MaterialTheme.typography.titleLarge)
-            Spacer(modifier = Modifier.height(12.dp))
-            Text("Here is some dummy text about the assignment details. You can replace this with real data later.")
+        LazyColumn(
+            modifier = Modifier
+                .padding(padding)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        ) {
+            itemsIndexed(dummyStudents) { index, student ->
+                StudentSubmissionCard(
+                    student = student,
+                )
+            }
         }
     }
 }

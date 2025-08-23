@@ -21,7 +21,8 @@ data class StudentDetails(
     val dateOfBirth: String = "",
     val admissionDate: String = "",
     val houseName: String = "",
-    val permanentAddress: String = ""
+    val permanentAddress: String = "",
+    val isSubmitted: Boolean
 )
 
 // Represents one exam's mark entry
@@ -46,7 +47,7 @@ val dummyStudents = listOf(
         fathersName = "Rajesh Sharma", fathersContact = "+91-9876543210",
         mothersName = "Priya Sharma", mothersContact = "+91-8765432109",
         dateOfBirth = "15 Mar 2006", admissionDate = "10 Apr 2023",
-        houseName = "Prakhar", permanentAddress = "H.No. 10, C-12, Sector-5, Noida, Uttar Pradesh 201301"
+        houseName = "Prakhar", permanentAddress = "H.No. 10, C-12, Sector-5, Noida, Uttar Pradesh 201301",true
     ),
     StudentDetails(
         2, "Riya", "+91-8873562256", R.drawable.avtar1, 96,
@@ -54,7 +55,7 @@ val dummyStudents = listOf(
         fathersName = "Amit Patel", fathersContact = "+91-9876543211",
         mothersName = "Sunita Patel", mothersContact = "+91-8765432110",
         dateOfBirth = "20 May 2006", admissionDate = "12 Apr 2023",
-        houseName = "Vikram", permanentAddress = "H.No. 15, C-14, Sector-6, Noida, Uttar Pradesh 201302"
+        houseName = "Vikram", permanentAddress = "H.No. 15, C-14, Sector-6, Noida, Uttar Pradesh 201302",false
     ),
     StudentDetails(
         3, "Ashutosh", "+91-8873562256", R.drawable.avtar1, 94,
@@ -62,7 +63,7 @@ val dummyStudents = listOf(
         fathersName = "Vikram Singh", fathersContact = "+91-9876543212",
         mothersName = "Anita Singh", mothersContact = "+91-8765432111",
         dateOfBirth = "10 Jul 2006", admissionDate = "11 Apr 2023",
-        houseName = "Arjun", permanentAddress = "H.No. 20, C-16, Sector-7, Noida, Uttar Pradesh 201303"
+        houseName = "Arjun", permanentAddress = "H.No. 20, C-16, Sector-7, Noida, Uttar Pradesh 201303",false
     ),
     StudentDetails(
         4, "Anish Taneja", "+91-9875352416", R.drawable.avtar1, 80,
@@ -70,7 +71,7 @@ val dummyStudents = listOf(
         fathersName = "Arun Taneja", fathersContact = "+91-8873548393",
         mothersName = "Minakshi Taneja", mothersContact = "+91-8873548393",
         dateOfBirth = "06 Aug 2006", admissionDate = "12 Apr 2023",
-        houseName = "Prakhar", permanentAddress = "H.No. 32, C-16, Sector-67, Noida, Uttar Pradesh 201309"
+        houseName = "Prakhar", permanentAddress = "H.No. 32, C-16, Sector-67, Noida, Uttar Pradesh 201309",false
     ),
     StudentDetails(
         5, "Apoorva Singh", "+91-8873562256", R.drawable.avtar1, 87,
@@ -78,7 +79,7 @@ val dummyStudents = listOf(
         fathersName = "Suresh Singh", fathersContact = "+91-9876543214",
         mothersName = "Meena Singh", mothersContact = "+91-8765432113",
         dateOfBirth = "25 Sep 2006", admissionDate = "13 Apr 2023",
-        houseName = "Shiv", permanentAddress = "H.No. 25, C-18, Sector-8, Noida, Uttar Pradesh 201304"
+        houseName = "Shiv", permanentAddress = "H.No. 25, C-18, Sector-8, Noida, Uttar Pradesh 201304",true
     ),
     StudentDetails(
         6, "Bhavesh Jha", "+91-8873562256", R.drawable.avtar1, 64,
@@ -86,7 +87,7 @@ val dummyStudents = listOf(
         fathersName = "Manoj Jha", fathersContact = "+91-9876543215",
         mothersName = "Lata Jha", mothersContact = "+91-8765432114",
         dateOfBirth = "12 Oct 2006", admissionDate = "14 Apr 2023",
-        houseName = "Nitin", permanentAddress = "H.No. 30, C-20, Sector-9, Noida, Uttar Pradesh 201305"
+        houseName = "Nitin", permanentAddress = "H.No. 30, C-20, Sector-9, Noida, Uttar Pradesh 201305",true
     ),
     StudentDetails(
         7, "Neha Sharma", "+91-8873562256", R.drawable.avtar1, 91,
@@ -94,7 +95,7 @@ val dummyStudents = listOf(
         fathersName = "Rakesh Sharma", fathersContact = "+91-9876543216",
         mothersName = "Geeta Sharma", mothersContact = "+91-8765432115",
         dateOfBirth = "05 Nov 2006", admissionDate = "15 Apr 2023",
-        houseName = "Ravi", permanentAddress = "H.No. 35, C-22, Sector-10, Noida, Uttar Pradesh 201306"
+        houseName = "Ravi", permanentAddress = "H.No. 35, C-22, Sector-10, Noida, Uttar Pradesh 201306",false
     ),
     StudentDetails(
         8, "Rahul Verma", "+91-8873562256", R.drawable.avtar1, 89,
@@ -102,7 +103,7 @@ val dummyStudents = listOf(
         fathersName = "Vijay Verma", fathersContact = "+91-9876543217",
         mothersName = "Kavita Verma", mothersContact = "+91-8765432116",
         dateOfBirth = "18 Dec 2006", admissionDate = "16 Apr 2023",
-        houseName = "Pranav", permanentAddress = "H.No. 40, C-24, Sector-11, Noida, Uttar Pradesh 201307"
+        houseName = "Pranav", permanentAddress = "H.No. 40, C-24, Sector-11, Noida, Uttar Pradesh 201307",false
     ),
     StudentDetails(
         9, "Sneha Patel", "+91-8873562256", R.drawable.avtar1, 85,
@@ -110,7 +111,7 @@ val dummyStudents = listOf(
         fathersName = "Deepak Patel", fathersContact = "+91-9876543218",
         mothersName = "Rita Patel", mothersContact = "+91-8765432117",
         dateOfBirth = "22 Jan 2007", admissionDate = "17 Apr 2023",
-        houseName = "Kunal", permanentAddress = "H.No. 45, C-26, Sector-12, Noida, Uttar Pradesh 201308"
+        houseName = "Kunal", permanentAddress = "H.No. 45, C-26, Sector-12, Noida, Uttar Pradesh 201308",true
     ),
     StudentDetails(
         10, "Karan Singh", "+91-8873562256", R.drawable.avtar1, 82,
@@ -118,7 +119,7 @@ val dummyStudents = listOf(
         fathersName = "Ajay Singh", fathersContact = "+91-9876543219",
         mothersName = "Nisha Singh", mothersContact = "+91-8765432118",
         dateOfBirth = "30 Feb 2007", admissionDate = "18 Apr 2023",
-        houseName = "Rahul", permanentAddress = "H.No. 50, C-28, Sector-13, Noida, Uttar Pradesh 201309"
+        houseName = "Rahul", permanentAddress = "H.No. 50, C-28, Sector-13, Noida, Uttar Pradesh 201309",true
     ),
     StudentDetails(
         11, "Priya Kapoor", "+91-8873562257", R.drawable.avtar1, 88,
@@ -126,7 +127,7 @@ val dummyStudents = listOf(
         fathersName = "Sanjay Kapoor", fathersContact = "+91-9876543220",
         mothersName = "Anjali Kapoor", mothersContact = "+91-8765432119",
         dateOfBirth = "14 Apr 2006", admissionDate = "19 Apr 2023",
-        houseName = "Siddhant", permanentAddress = "H.No. 55, C-30, Sector-14, Noida, Uttar Pradesh 201310"
+        houseName = "Siddhant", permanentAddress = "H.No. 55, C-30, Sector-14, Noida, Uttar Pradesh 201310",false
     ),
     StudentDetails(
         12, "Vivek Reddy", "+91-8873562258", R.drawable.avtar1, 76,
@@ -134,7 +135,7 @@ val dummyStudents = listOf(
         fathersName = "Ravi Reddy", fathersContact = "+91-9876543221",
         mothersName = "Lakshmi Reddy", mothersContact = "+91-8765432120",
         dateOfBirth = "09 Jun 2006", admissionDate = "20 Apr 2023",
-        houseName = "Rohan", permanentAddress = "H.No. 60, C-32, Sector-15, Noida, Uttar Pradesh 201311"
+        houseName = "Rohan", permanentAddress = "H.No. 60, C-32, Sector-15, Noida, Uttar Pradesh 201311",false
     ),
     StudentDetails(
         13, "Meera Joshi", "+91-8873562259", R.drawable.avtar1, 93,
@@ -142,7 +143,7 @@ val dummyStudents = listOf(
         fathersName = "Anil Joshi", fathersContact = "+91-9876543222",
         mothersName = "Suman Joshi", mothersContact = "+91-8765432121",
         dateOfBirth = "03 Aug 2006", admissionDate = "21 Apr 2023",
-        houseName = "Kiran", permanentAddress = "H.No. 65, C-34, Sector-16, Noida, Uttar Pradesh 201312"
+        houseName = "Kiran", permanentAddress = "H.No. 65, C-34, Sector-16, Noida, Uttar Pradesh 201312",false
     ),
     StudentDetails(
         14, "Arjun Mehra", "+91-8873562260", R.drawable.avtar1, 79,
@@ -150,7 +151,7 @@ val dummyStudents = listOf(
         fathersName = "Vikram Mehra", fathersContact = "+91-9876543223",
         mothersName = "Neeta Mehra", mothersContact = "+91-8765432122",
         dateOfBirth = "17 Sep 2006", admissionDate = "22 Apr 2023",
-        houseName = "Aman", permanentAddress = "H.No. 70, C-36, Sector-17, Noida, Uttar Pradesh 201313"
+        houseName = "Aman", permanentAddress = "H.No. 70, C-36, Sector-17, Noida, Uttar Pradesh 201313",true
     ),
     StudentDetails(
         15, "Shalini Gupta", "+91-8873562261", R.drawable.avtar1, 84,
@@ -158,7 +159,7 @@ val dummyStudents = listOf(
         fathersName = "Rakesh Gupta", fathersContact = "+91-9876543224",
         mothersName = "Poonam Gupta", mothersContact = "+91-8765432123",
         dateOfBirth = "22 Oct 2006", admissionDate = "23 Apr 2023",
-        houseName = "Vishal", permanentAddress = "H.No. 75, C-38, Sector-18, Noida, Uttar Pradesh 201314"
+        houseName = "Vishal", permanentAddress = "H.No. 75, C-38, Sector-18, Noida, Uttar Pradesh 201314",true
     ),
     StudentDetails(
         16, "Rohan Desai", "+91-8873562262", R.drawable.avtar1, 77,
@@ -166,7 +167,7 @@ val dummyStudents = listOf(
         fathersName = "Mahesh Desai", fathersContact = "+91-9876543225",
         mothersName = "Komal Desai", mothersContact = "+91-8765432124",
         dateOfBirth = "05 Nov 2006", admissionDate = "24 Apr 2023",
-        houseName = "Prateek", permanentAddress = "H.No. 80, C-40, Sector-19, Noida, Uttar Pradesh 201315"
+        houseName = "Prateek", permanentAddress = "H.No. 80, C-40, Sector-19, Noida, Uttar Pradesh 201315",true
     ),
     StudentDetails(
         17, "Tanya Malhotra", "+91-8873562263", R.drawable.avtar1, 90,
@@ -174,7 +175,7 @@ val dummyStudents = listOf(
         fathersName = "Sunil Malhotra", fathersContact = "+91-9876543226",
         mothersName = "Rita Malhotra", mothersContact = "+91-8765432125",
         dateOfBirth = "12 Dec 2006", admissionDate = "25 Apr 2023",
-        houseName = "Suresh", permanentAddress = "H.No. 85, C-42, Sector-20, Noida, Uttar Pradesh 201316"
+        houseName = "Suresh", permanentAddress = "H.No. 85, C-42, Sector-20, Noida, Uttar Pradesh 201316",true
     ),
     StudentDetails(
         18, "Kunal Sharma", "+91-8873562264", R.drawable.avtar1, 83,
@@ -182,7 +183,7 @@ val dummyStudents = listOf(
         fathersName = "Rajesh Sharma", fathersContact = "+91-9876543227",
         mothersName = "Anita Sharma", mothersContact = "+91-8765432126",
         dateOfBirth = "19 Jan 2007", admissionDate = "26 Apr 2023",
-        houseName = "Gaurav", permanentAddress = "H.No. 90, C-44, Sector-21, Noida, Uttar Pradesh 201317"
+        houseName = "Gaurav", permanentAddress = "H.No. 90, C-44, Sector-21, Noida, Uttar Pradesh 201317",true
     ),
     StudentDetails(
         19, "Nisha Agarwal", "+91-8873562265", R.drawable.avtar1, 86,
@@ -190,7 +191,7 @@ val dummyStudents = listOf(
         fathersName = "Vijay Agarwal", fathersContact = "+91-9876543228",
         mothersName = "Meena Agarwal", mothersContact = "+91-8765432127",
         dateOfBirth = "25 Feb 2007", admissionDate = "27 Apr 2023",
-        houseName = "Rakesh", permanentAddress = "H.No. 95, C-46, Sector-22, Noida, Uttar Pradesh 201318"
+        houseName = "Rakesh", permanentAddress = "H.No. 95, C-46, Sector-22, Noida, Uttar Pradesh 201318",true
     ),
     StudentDetails(
         20, "Samarth Jain", "+91-8873562266", R.drawable.avtar1, 81,
@@ -198,7 +199,7 @@ val dummyStudents = listOf(
         fathersName = "Amit Jain", fathersContact = "+91-9876543229",
         mothersName = "Pooja Jain", mothersContact = "+91-8765432128",
         dateOfBirth = "30 Mar 2007", admissionDate = "28 Apr 2023",
-        houseName = "Nikhil", permanentAddress = "H.No. 100, C-48, Sector-23, Noida, Uttar Pradesh 201319"
+        houseName = "Nikhil", permanentAddress = "H.No. 100, C-48, Sector-23, Noida, Uttar Pradesh 201319",false
     )
 )
 
