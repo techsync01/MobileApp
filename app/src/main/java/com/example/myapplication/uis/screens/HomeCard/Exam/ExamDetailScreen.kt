@@ -38,6 +38,7 @@ package com.example.myapplication.uis.screens.HomeCard.Exam
 
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -46,7 +47,7 @@ import com.example.myapplication.uis.components.Home.Students.Exam.SecondTabExam
 import com.example.myapplication.uis.components.Home.Students.Exam.SecondTabExam.ExamTopBar
 import com.example.myapplication.uis.model.Home.Class.dummyStudents
 import com.example.myapplication.uis.screens.HomeCard.Exam.Inside.ReportCardScreen
-
+import androidx.compose.foundation.lazy.items
 @Composable
 fun ExamDetailScreen(className: String, navController: NavController) {
     var selectedTab by remember { mutableStateOf("Report Card") }
@@ -58,9 +59,16 @@ fun ExamDetailScreen(className: String, navController: NavController) {
 
         when (selectedTab) {
             "Report Card" -> {
-                Column {
-                    dummyStudents.forEach { student ->
-                        StudentItem (student = student, onClick = {
+//                Column {
+//                    dummyStudents.forEach { student ->
+//                        StudentItem (student = student, onClick = {
+//                            navController.navigate("report_card/${student.id}")
+//                        })
+//                    }
+//                }
+                LazyColumn {
+                    items(dummyStudents) { student ->
+                        StudentItem(student = student, onClick = {
                             navController.navigate("report_card/${student.id}")
                         })
                     }
